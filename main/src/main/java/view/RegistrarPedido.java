@@ -62,7 +62,7 @@ public class RegistrarPedido extends javax.swing.JFrame {
         jLabel3.setText("Producto:");
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Silla", "Sillon", "Cajon", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Silla", "Sillon", "Mesa", "Cama" }));
         jComboBox1.setToolTipText("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +86,11 @@ public class RegistrarPedido extends javax.swing.JFrame {
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField2.setText("......................");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("..............................................................................................................................................");
 
@@ -240,6 +245,10 @@ public class RegistrarPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -284,4 +293,19 @@ public class RegistrarPedido extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+    
+    public String getProducto(){
+        return jComboBox1.getItemAt(jComboBox1.getSelectedIndex());
+    }
+    
+    public String getNombre(){
+        return jTextField1.getText();
+    }
+    
+    public int getCantidad(){
+        return Integer.parseInt(jTextField2.getText());
+    }
+
+
 }
+

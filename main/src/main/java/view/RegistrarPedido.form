@@ -191,8 +191,8 @@
               <StringArray count="4">
                 <StringItem index="0" value="Silla"/>
                 <StringItem index="1" value="Sillon"/>
-                <StringItem index="2" value="Cajon"/>
-                <StringItem index="3" value="Item 4"/>
+                <StringItem index="2" value="Mesa"/>
+                <StringItem index="3" value="Cama"/>
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value=""/>
@@ -238,6 +238,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="......................"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
