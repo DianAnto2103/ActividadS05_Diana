@@ -15,7 +15,6 @@ import model.Sillon;
  * @author diana
  */
 public class StockProducto {
-    Pedido pedido;
     ArrayList<Producto> producto;
     
     public StockProducto() {
@@ -30,12 +29,7 @@ public class StockProducto {
         for(int i = 0; i < producto.size(); i++){
             Producto p = producto.get(i);
             if(p.getNombre().equals(pedido.getProducto())){
-                if(p.getStock() >= pedido.getCantidad()){
-                    return true;
-                }
-                else{
-                    return false;
-                }
+                return p.getStock() >= pedido.getCantidad();
             }
         }
         return false;
