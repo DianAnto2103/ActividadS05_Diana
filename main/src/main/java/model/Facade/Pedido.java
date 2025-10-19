@@ -23,4 +23,17 @@ public class Pedido {
     public boolean cantidadCorrecta(int cantidad){
         return cantidad > 0;
     }
+   
+    
+    public String getNombre_cliente() {
+        return nombre_cliente;
+    }
+
+    public String getProducto() {
+        return producto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
 }
