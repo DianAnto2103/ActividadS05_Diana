@@ -8,27 +8,38 @@ package model;
  *
  * @author diana
  */
-public abstract class Producto {
-    private String nombre;
-    private int stock;
-    private double precio;
+public class Producto {
+    String nombre;
+    int cantidadStock;
+    double precio;
     
-    public Producto(String nombre, int stock, double precio) {
+    public Producto(String nombre, int cantidadStock, double precio) {
         this.nombre = nombre;
-        this.stock = stock;
+        this.cantidadStock = cantidadStock;
         this.precio = precio;
-    }
+    }  
     
     public String getNombre() {
         return nombre;
     }
 
-    public int getStock() {
-        return stock;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCantidad() {
+        return cantidadStock;
+    }
+
+    public void setCantidad(int cantidadStock) {
+        this.cantidadStock = cantidadStock;
     }
 
     public double getPrecio() {
         return precio;
     }
-   
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
 }

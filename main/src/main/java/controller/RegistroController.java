@@ -4,6 +4,7 @@
  */
 package controller;
 
+import model.Facade.PedidoFacade;
 import view.RegistrarPedidoView;
 
 /**

@@ -4,13 +4,14 @@
  */
 package model.Facade;
 
+import model.Pedido;
+
+
 /**
  *
  * @author diana
  */
-public class PedidoFacade {
-
-    
-    
+public class CalcularMontoTotal {
+    Pedido pedido;
     
 }
