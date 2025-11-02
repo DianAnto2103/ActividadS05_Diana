@@ -4,6 +4,8 @@
  */
 package model.Facade;
 
+import model.Pedido;
+
 
 
 /**
@@ -13,6 +15,7 @@ package model.Facade;
 public class ValidarStockProducto {
     
     
-
-    
+    public boolean validarStock(Pedido pedido){
+        return pedido.getCantidad() <= pedido.getProducto().getCantidadStock();
+    }   
 }

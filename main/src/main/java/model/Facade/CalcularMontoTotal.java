@@ -13,10 +13,6 @@ import model.Pedido;
  */
 public class CalcularMontoTotal {
     
-    public CalcularMontoTotal() {
-        
-    }
-    
     public void calcular(Pedido pedido){
         double subtotal = calcularSubTotal(pedido);
         double IGV = 0.18;

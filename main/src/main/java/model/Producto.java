@@ -27,11 +27,11 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public int getCantidad() {
+    public int getCantidadStock() {
         return cantidadStock;
     }
 
-    public void setCantidad(int cantidadStock) {
+    public void setCantidadStock(int cantidadStock) {
         this.cantidadStock = cantidadStock;
     }
 
