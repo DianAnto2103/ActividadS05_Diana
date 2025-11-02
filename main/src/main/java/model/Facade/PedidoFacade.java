@@ -4,13 +4,28 @@
  */
 package model.Facade;
 
+import model.Pedido;
+
 /**
  *
  * @author diana
  */
 public class PedidoFacade {
+    private CalcularMontoTotal calculadora;
+    private RegistrarPedido registradora;
+    private ValidarStockProducto validadora;
 
-    
-    
+    public boolean procesarPedido(Pedido pedido){
+        if(!validadora.validarStock(pedido)){
+            return false;
+        }
+        calculadora.calcular(pedido);
+        
+        if(!registradora.registrar(pedido)){
+            return false;
+        }
+        
+        return true;
+    }
     
 }

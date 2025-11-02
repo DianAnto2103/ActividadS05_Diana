@@ -4,14 +4,13 @@
  */
 package controller;
 
-import model.Facade.PedidoFacade;
 import view.RegistrarPedidoView;
 
 /**
  *
  * @author diana
  */
-public class RegistroController {
+public final class RegistroController {
     RegistrarPedidoView vistaRegistro;
     
     public RegistroController(RegistrarPedidoView vistaRegistro){
