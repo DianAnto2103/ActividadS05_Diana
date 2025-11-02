@@ -13,6 +13,9 @@ public class Pedido {
     String nombreCliente;
     Producto producto;
     int cantidad;
+    double subtotal;
+    double total;
+    double IGV;
     
     public Pedido(String nombreCliente, Producto producto, int cantidad) {
         this.nombreCliente = nombreCliente;
@@ -43,5 +46,29 @@ public class Pedido {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+    
+     public double getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public double getIGV() {
+        return IGV;
+    }
+
+    public void setIGV(double IGV) {
+        this.IGV = IGV;
     }
 }

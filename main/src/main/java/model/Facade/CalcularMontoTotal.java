@@ -12,6 +12,22 @@ import model.Pedido;
  * @author diana
  */
 public class CalcularMontoTotal {
-    Pedido pedido;
     
+    public CalcularMontoTotal() {
+        
+    }
+    
+    public void calcular(Pedido pedido){
+        double subtotal = calcularSubTotal(pedido);
+        double IGV = 0.18;
+        double total = subtotal + IGV;
+        
+        pedido.setSubtotal(subtotal);
+        pedido.setIGV(IGV);
+        pedido.setTotal(total); 
+    }
+    
+    public double calcularSubTotal(Pedido pedido){
+        return pedido.getCantidad()* pedido.getProducto().getPrecio();
+    }
 }
