@@ -4,19 +4,24 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JTextField;
+
 /**
  *
  * @author diana
  */
-public class RegistrarPedido extends javax.swing.JFrame {
+public class RegistrarPedidoView extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarPedido.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarPedidoView.class.getName());
 
     /**
      * Creates new form RegistrarPedido
      */
-    public RegistrarPedido() {
+    public RegistrarPedidoView() {
         initComponents();
+        this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -374,9 +379,8 @@ public class RegistrarPedido extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new RegistrarPedido().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new RegistrarPedidoView().setVisible(true));
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField IGV;
     private javax.swing.JTextField apellidoCliente;
@@ -403,5 +407,25 @@ public class RegistrarPedido extends javax.swing.JFrame {
     private javax.swing.JTextField totalProducto;
     // End of variables declaration//GEN-END:variables
     
+    public JTextField getIGV() {
+        return IGV;
+    }
+
+    public JTextField getApellidoCliente() {
+        return apellidoCliente;
+    }
+
+    public JButton getBotonAceptar() {
+        return botonAceptar;
+    }
+
+    public JButton getBotonCancelar() {
+        return botonCancelar;
+    }
+
+    public JTextField getCantidadProducto() {
+        return cantidadProducto;
+    }
+
 }
 

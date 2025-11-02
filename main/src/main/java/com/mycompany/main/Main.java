@@ -4,6 +4,8 @@
 
 package com.mycompany.main;
 
+import controller.HomeController;
+
 /**
  *
  * @author diana
@@ -11,6 +13,6 @@ package com.mycompany.main;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        HomeController homecontroller = new HomeController();
     }
 }

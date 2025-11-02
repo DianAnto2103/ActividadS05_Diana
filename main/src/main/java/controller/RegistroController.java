@@ -4,10 +4,26 @@
  */
 package controller;
 
+import view.RegistrarPedidoView;
+
 /**
  *
  * @author diana
  */
 public class RegistroController {
+    RegistrarPedidoView vistaRegistro;
+    
+    public RegistroController(RegistrarPedidoView vistaRegistro){
+        this.vistaRegistro = vistaRegistro;
+        configurarEventos();
+    }
+    
+    public void configurarEventos(){
+        this.vistaRegistro.getBotonCancelar().addActionListener(e -> cerrarVentana());
+    }
+    
+    public void cerrarVentana(){
+        this.vistaRegistro.dispose();
+    }
     
 }
