@@ -209,7 +209,7 @@ public class FacturaView extends javax.swing.JPanel {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(totalProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel10)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

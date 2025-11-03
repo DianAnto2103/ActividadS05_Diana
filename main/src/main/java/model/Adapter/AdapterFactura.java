@@ -4,11 +4,12 @@
  */
 package model.Adapter;
 
+import model.Pedido;
+
 /**
  *
  * @author diana
  */
 public class AdapterFactura implements FacturaServicio{
-    private LegacyBillingSystem factura;
-    
+
 }

@@ -27,6 +27,7 @@ public class PedidoFacade {
         if(!validadora.validarStock(pedido)){
             return false;
         }
+        
         calculadora.calcular(pedido);
         
         if(!registradora.registrar(pedido)){
@@ -34,6 +35,5 @@ public class PedidoFacade {
         }
         
         return true;
-    }
-    
+    }   
 }

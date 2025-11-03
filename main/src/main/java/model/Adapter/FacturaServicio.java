@@ -4,10 +4,11 @@
  */
 package model.Adapter;
 
+import model.Pedido;
+
 /**
  *
  * @author diana
  */
 public interface FacturaServicio {
-    
 }
