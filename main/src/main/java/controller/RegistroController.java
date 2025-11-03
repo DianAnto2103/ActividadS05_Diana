@@ -13,18 +13,20 @@ import view.RegistrarPedidoView;
  * @author diana
  */
 public final class RegistroController {
-    RegistrarPedidoView vistaRegistro;
-    PedidoFacade pedidoFacade;
+    private RegistrarPedidoView vistaRegistro;
+    private PedidoFacade pedidoFacade;
+    private Pedido pedidoGuardado;
     
     public RegistroController(RegistrarPedidoView vistaRegistro){
-        
+        this.vistaRegistro = vistaRegistro;
+        this.pedidoFacade = new PedidoFacade();
         configurarEventos();
     }
     
     public void configurarEventos(){
         this.vistaRegistro.getBotonCancelar().addActionListener(e -> cerrarVentana());
-        this.vistaRegistro.getBotonAceptar().addActionListener(e -> registrar());
-        this.vistaRegistro.getGenerarComprobante().addActionListener(e -> generarComprobante());
+        this.vistaRegistro.getBotonAceptar().addActionListener(e -> calcularPedido());
+        this.vistaRegistro.getGenerarComprobante().addActionListener(e -> confirmarPedido());
     }
     
     public void cerrarVentana(){
@@ -32,7 +34,7 @@ public final class RegistroController {
     }  
     
     
-    public void registrar()
+    public void calcularPedido()
     {
         try
         {
@@ -40,13 +42,19 @@ public final class RegistroController {
             Producto producto = crearProducto(nombreProducto);
             Pedido pedido = new Pedido(vistaRegistro.getNombreCliente(),producto,vistaRegistro.getCantidadProducto());
         
-            boolean exito = pedidoFacade.procesarPedido(pedido);
+            boolean exito = pedidoFacade.procesarPedido(pedido, false);
+         
         
             if(exito)
             {
+                this.pedidoGuardado = pedido;
+                
+                
                 this.vistaRegistro.setTotal(pedido.getTotal());
                 this.vistaRegistro.setIGV(pedido.getIGV());
                 this.vistaRegistro.setSubTotalProducto(pedido.getSubtotal());
+                
+                JOptionPane.showMessageDialog(vistaRegistro, "Confirmar, por favor", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
                 JOptionPane.showMessageDialog(vistaRegistro, "Stock insuficiente para:" + nombreProducto, "Error", JOptionPane.ERROR_MESSAGE);
@@ -54,18 +62,35 @@ public final class RegistroController {
         
         } catch(Exception e)
         {
-            JOptionPane.showMessageDialog(vistaRegistro, "Ingrese datos completos", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaRegistro, "Ingrese datos completos" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-        
     }
     
-    public void generarComprobante(){
-        String nombreProducto = vistaRegistro.getProducto();
-        Producto producto = crearProducto(nombreProducto);
-        
-        Pedido pedido = new Pedido(vistaRegistro.getNombreCliente(),producto,vistaRegistro.getCantidadProducto());
-        pedidoFacade.generarComprobante(pedido);
+    public void confirmarPedido()
+    {
+        if(pedidoGuardado == null)
+        {
+            JOptionPane.showMessageDialog(vistaRegistro, "Primero calcule el pedido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try
+        {
+            boolean exito = pedidoFacade.procesarPedido(pedidoGuardado, true);
+            if(exito)
+            {
+                JOptionPane.showMessageDialog(vistaRegistro, "¡Pedido confirmado y comprobante generado!", "Exito", 
+                    JOptionPane.INFORMATION_MESSAGE);
+                
+                this.pedidoGuardado = null; //es para limpiar pedido guardado
+            }
+            else 
+            {
+              JOptionPane.showMessageDialog(vistaRegistro, "Error al confirmar el pedido", "Error", 
+                    JOptionPane.ERROR_MESSAGE);  
+            }
+        }catch(Exception e){
+           JOptionPane.showMessageDialog(vistaRegistro, "Error al confirmar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); 
+        }
     }
     
     

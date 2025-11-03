@@ -4,6 +4,7 @@
  */
 package model.Facade;
 
+import model.Adapter.AdapterFactura;
 import model.Pedido;
 
 /**
@@ -15,7 +16,7 @@ public class PedidoFacade {
     private RegistroDePedidos registradora;
     private ValidacionDeStock validadora;
     private GeneraciondeComprobante comprobante;
-    private PedidoFacadeAdicional facadeAdicional;
+    private AdapterFactura comprobantedePago;
     
     public PedidoFacade(){
         this.calculadora = new CalculoDeImpuestos();
@@ -24,22 +25,21 @@ public class PedidoFacade {
         this.comprobante = new GeneraciondeComprobante();
     }
 
-    public boolean procesarPedido(Pedido pedido){
+    public boolean procesarPedido(Pedido pedido, boolean confirmacion){
+        //Se valida el stock
         if(!validadora.validarStock(pedido)){
             return false;
         }
         
+        //Se calcula el total (sub-total, IGV, total)
         calculadora.calcular(pedido);
         
-        if(!registradora.registrar(pedido)){
-            return false;
+        if(confirmacion){
+            if(!registradora.registrar(pedido)){
+                return false;
+            }
+            comprobantedePago.emitirFactura(pedido);
         }
-        
         return true;
     }   
-    
-    public void generarComprobante(Pedido pedido){
-        procesarPedido(pedido);
-        facadeAdicional.generarComprobantedePago(pedido);
-    }
 }
