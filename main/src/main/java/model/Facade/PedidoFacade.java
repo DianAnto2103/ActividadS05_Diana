@@ -15,6 +15,7 @@ public class PedidoFacade {
     private RegistroDePedidos registradora;
     private ValidacionDeStock validadora;
     private GeneraciondeComprobante comprobante;
+    private PedidoFacadeAdicional facadeAdicional;
     
     public PedidoFacade(){
         this.calculadora = new CalculoDeImpuestos();
@@ -36,4 +37,9 @@ public class PedidoFacade {
         
         return true;
     }   
+    
+    public void generarComprobante(Pedido pedido){
+        procesarPedido(pedido);
+        facadeAdicional.generarComprobantedePago(pedido);
+    }
 }

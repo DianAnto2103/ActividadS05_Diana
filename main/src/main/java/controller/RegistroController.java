@@ -17,8 +17,6 @@ public final class RegistroController {
     PedidoFacade pedidoFacade;
     
     public RegistroController(RegistrarPedidoView vistaRegistro){
-        this.vistaRegistro = vistaRegistro;
-        this.pedidoFacade = new PedidoFacade();
         
         configurarEventos();
     }
@@ -26,6 +24,7 @@ public final class RegistroController {
     public void configurarEventos(){
         this.vistaRegistro.getBotonCancelar().addActionListener(e -> cerrarVentana());
         this.vistaRegistro.getBotonAceptar().addActionListener(e -> registrar());
+        this.vistaRegistro.getGenerarComprobante().addActionListener(e -> generarComprobante());
     }
     
     public void cerrarVentana(){
@@ -55,10 +54,18 @@ public final class RegistroController {
         
         } catch(Exception e)
         {
-            JOptionPane.showMessageDialog(vistaRegistro, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(vistaRegistro, "Ingrese datos completos", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
         
+    }
+    
+    public void generarComprobante(){
+        String nombreProducto = vistaRegistro.getProducto();
+        Producto producto = crearProducto(nombreProducto);
+        
+        Pedido pedido = new Pedido(vistaRegistro.getNombreCliente(),producto,vistaRegistro.getCantidadProducto());
+        pedidoFacade.generarComprobante(pedido);
     }
     
     
@@ -78,5 +85,6 @@ public final class RegistroController {
                 return new Producto(nombre, 20, 20);
         }
     }
+    
    
 }
