@@ -23,7 +23,7 @@ public class FacturaController {
         this.frameFactura.setContentPane(vistaFactura);
         this.frameFactura.pack();
         this.frameFactura.setLocationRelativeTo(null);
-        this.frameFactura.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); 
+        this.frameFactura.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
     }
     
     public void mostrarComprobante(Pedido pedido){

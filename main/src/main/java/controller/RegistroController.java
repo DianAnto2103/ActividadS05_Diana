@@ -44,17 +44,17 @@ public final class RegistroController {
         try
         {
             String nombreProducto = vistaRegistro.getProducto();
+            int cantidad = vistaRegistro.getCantidadProducto();
             Producto producto = crearProducto(nombreProducto);
             Pedido pedido = new Pedido(vistaRegistro.getNombreCliente(),producto,vistaRegistro.getCantidadProducto());
         
-            boolean exito = pedidoFacade.procesarPedido(pedido, false);
+            String resultado = pedidoFacade.procesarPedido(pedido, false);
          
         
-            if(exito)
+            if("VALIDO".equals(resultado))
             {
                 this.pedidoGuardado = pedido;
-                
-                
+              
                 this.vistaRegistro.setTotal(pedido.getTotal());
                 this.vistaRegistro.setIGV(pedido.getIGV());
                 this.vistaRegistro.setSubTotalProducto(pedido.getSubtotal());
@@ -62,7 +62,16 @@ public final class RegistroController {
                 JOptionPane.showMessageDialog(vistaRegistro, "Confirmar, por favor", "Confirmación", JOptionPane.INFORMATION_MESSAGE);
             }
             else{
-                JOptionPane.showMessageDialog(vistaRegistro, "Stock insuficiente para:" + nombreProducto, "Error", JOptionPane.ERROR_MESSAGE);
+                String mensajeError = " ";
+                if("CANTIDAD_INVALIDA".equals(resultado))
+                {
+                    mensajeError = "Cantidad invalida, debe ser mayor a 0";
+                }
+                else if("STOCK_INSUFICIENTE".equals(resultado))
+                {
+                    mensajeError = "Stock insuficiente para: " + nombreProducto;
+                }
+                    JOptionPane.showMessageDialog(vistaRegistro, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
             }
         
         } catch(Exception e)
@@ -80,14 +89,10 @@ public final class RegistroController {
         }
         try
         {
-            boolean exito = pedidoFacade.procesarPedido(pedidoGuardado, true);
-            if(exito)
+            String resultado = pedidoFacade.procesarPedido(pedidoGuardado, true);
+            if("VALIDO".equals(resultado))
             {
                 facturaController.mostrarComprobante(pedidoGuardado);
-                
-                JOptionPane.showMessageDialog(vistaRegistro, "¡Pedido confirmado y comprobante generado!", "Exito", 
-                    JOptionPane.INFORMATION_MESSAGE);
-                
                 this.pedidoGuardado = null; //es para limpiar pedido guardado
             }
             else 

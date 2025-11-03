@@ -23,10 +23,13 @@ public class PedidoFacade {
         this.comprobante = new GeneraciondeComprobante();
     }
 
-    public boolean procesarPedido(Pedido pedido, boolean confirmacion){
-        //Se valida el stock
+    public String procesarPedido(Pedido pedido, boolean confirmacion){
+        if (pedido.getCantidad() <= 0) {
+            return "CANTIDAD_INVALIDA";
+        }
+         //Se valida el stock
         if(!validadora.validarStock(pedido)){
-            return false;
+             return "STOCK_INSUFICIENTE";
         }
         
         //Se calcula el total (sub-total, IGV, total)
@@ -34,10 +37,10 @@ public class PedidoFacade {
         
         if(confirmacion){
             if(!registradora.registrar(pedido)){
-                return false;
+                return "ERROR_REGISTRO";
             }
             comprobante.generarComprobante(pedido);
         }
-        return true;
+        return "VALIDO";
     }   
 }
