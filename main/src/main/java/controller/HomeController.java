@@ -13,7 +13,8 @@ import view.*;
  */
 public class HomeController {
     RegistrarPedidoView vistaRegistrarPedido = new RegistrarPedidoView();
-    RegistroController controllerRegistroController = new RegistroController(vistaRegistrarPedido);
+    FacturaView vistaFactura = new FacturaView();
+    RegistroController controllerRegistroController = new RegistroController(vistaRegistrarPedido, vistaFactura);
     
     {
         vistaRegistrarPedido.setVisible(true);

@@ -189,19 +189,19 @@ public class FacturaView extends javax.swing.JPanel {
     private javax.swing.JTextField totalProducto;
     // End of variables declaration//GEN-END:variables
 
-    public void setCantidadProducto(JLabel cantidadProducto) {
-        this.cantidadProducto = cantidadProducto;
+    public void setCantidadProducto(String cantidadProducto) {
+        this.cantidadProducto.setText(cantidadProducto);
     }
 
-    public void setNombreCliente(JLabel nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente.setText(nombreCliente);
     }
 
-    public void setNombreProducto(JLabel nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto.setText(nombreProducto);
     }
 
-    public void setTotalProducto(JTextField totalProducto) {
-        this.totalProducto = totalProducto;
+    public void setTotalProducto(String totalProducto) {
+        this.totalProducto.setText(totalProducto);
     }
 }

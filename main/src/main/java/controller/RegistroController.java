@@ -7,6 +7,7 @@ package controller;
 import javax.swing.JOptionPane;
 import model.Facade.PedidoFacade;
 import model.*;
+import view.FacturaView;
 import view.RegistrarPedidoView;
 /**
  *
@@ -16,10 +17,12 @@ public final class RegistroController {
     private RegistrarPedidoView vistaRegistro;
     private PedidoFacade pedidoFacade;
     private Pedido pedidoGuardado;
+    private FacturaController facturaController;
+    private FacturaView vistaFactura;
     
-    public RegistroController(RegistrarPedidoView vistaRegistro){
+    public RegistroController(RegistrarPedidoView vistaRegistro,FacturaView vistaFactura){
         this.vistaRegistro = vistaRegistro;
-        this.pedidoFacade = new PedidoFacade();
+        this.facturaController = new FacturaController(vistaFactura);
         configurarEventos();
     }
     
@@ -78,6 +81,8 @@ public final class RegistroController {
             boolean exito = pedidoFacade.procesarPedido(pedidoGuardado, true);
             if(exito)
             {
+                facturaController.mostrarComprobante(pedidoGuardado);
+                
                 JOptionPane.showMessageDialog(vistaRegistro, "¡Pedido confirmado y comprobante generado!", "Exito", 
                     JOptionPane.INFORMATION_MESSAGE);
                 

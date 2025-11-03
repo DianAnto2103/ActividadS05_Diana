@@ -13,8 +13,8 @@ import model.Pedido;
 public class AdapterFactura implements FacturaServicio{
     LegacyBillingSystem adaptee;
     
-    public AdapterFactura() {
-        
+    public AdapterFactura(LegacyBillingSystem adaptee) {
+        this.adaptee = adaptee;
     }
     
     @Override

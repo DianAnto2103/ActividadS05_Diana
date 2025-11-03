@@ -4,7 +4,7 @@
  */
 package model.Facade;
 
-import model.Adapter.AdapterFactura;
+import model.Adapter.FacturaServicio;
 import model.Pedido;
 
 /**
@@ -16,9 +16,8 @@ public class PedidoFacade {
     private RegistroDePedidos registradora;
     private ValidacionDeStock validadora;
     private GeneraciondeComprobante comprobante;
-    private AdapterFactura comprobantedePago;
     
-    public PedidoFacade(){
+    public PedidoFacade(FacturaServicio facturaServicio){
         this.calculadora = new CalculoDeImpuestos();
         this.registradora = new RegistroDePedidos();
         this.validadora = new ValidacionDeStock();
@@ -38,7 +37,7 @@ public class PedidoFacade {
             if(!registradora.registrar(pedido)){
                 return false;
             }
-            comprobantedePago.emitirFactura(pedido);
+            comprobante.generarComprobante(pedido);
         }
         return true;
     }   
