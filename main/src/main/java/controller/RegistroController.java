@@ -22,6 +22,8 @@ public final class RegistroController {
     
     public RegistroController(RegistrarPedidoView vistaRegistro,FacturaView vistaFactura){
         this.vistaRegistro = vistaRegistro;
+        this.vistaFactura = vistaFactura;
+        this.pedidoFacade = new PedidoFacade();
         this.facturaController = new FacturaController(vistaFactura);
         configurarEventos();
     }

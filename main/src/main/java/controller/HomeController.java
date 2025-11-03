@@ -4,6 +4,7 @@
  */
 package controller;
 
+import javax.swing.*;
 import view.*;
 
 
@@ -12,11 +13,22 @@ import view.*;
  * @author diana
  */
 public class HomeController {
-    RegistrarPedidoView vistaRegistrarPedido = new RegistrarPedidoView();
-    FacturaView vistaFactura = new FacturaView();
-    RegistroController controllerRegistroController = new RegistroController(vistaRegistrarPedido, vistaFactura);
+    RegistrarPedidoView vistaRegistrarPedido;
+    FacturaView vistaFactura;
+    RegistroController controllerRegistroController;
+
+    public HomeController() {
+        inicializarComponentes();
+        mostrarVentanaPrincipal();
+    }
     
-    {
+    public void inicializarComponentes(){
+        this.vistaRegistrarPedido = new RegistrarPedidoView();
+        this.vistaFactura = new FacturaView();
+        this.controllerRegistroController = new RegistroController(vistaRegistrarPedido, vistaFactura);
+    }
+    
+    public void mostrarVentanaPrincipal(){ 
         vistaRegistrarPedido.setVisible(true);
     }
     
