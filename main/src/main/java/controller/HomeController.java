@@ -4,7 +4,8 @@
  */
 package controller;
 
-import view.RegistrarPedidoView;
+import view.*;
+
 
 /**
  *

@@ -11,9 +11,17 @@ import model.Pedido;
  * @author diana
  */
 public class PedidoFacade {
-    private CalcularMontoTotal calculadora;
-    private RegistrarPedido registradora;
-    private ValidarStockProducto validadora;
+    private CalculoDeImpuestos calculadora;
+    private RegistroDePedidos registradora;
+    private ValidacionDeStock validadora;
+    private GeneraciondeComprobante comprobante;
+    
+    public PedidoFacade(){
+        this.calculadora = new CalculoDeImpuestos();
+        this.registradora = new RegistroDePedidos();
+        this.validadora = new ValidacionDeStock();
+        this.comprobante = new GeneraciondeComprobante();
+    }
 
     public boolean procesarPedido(Pedido pedido){
         if(!validadora.validarStock(pedido)){

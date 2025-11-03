@@ -12,7 +12,7 @@ import model.Pedido;
  *
  * @author diana
  */
-public class ValidarStockProducto {
+public class ValidacionDeStock {
     
     
     public boolean validarStock(Pedido pedido){

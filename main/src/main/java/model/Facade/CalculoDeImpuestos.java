@@ -11,11 +11,11 @@ import model.Pedido;
  *
  * @author diana
  */
-public class CalcularMontoTotal {
+public class CalculoDeImpuestos {
     
     public void calcular(Pedido pedido){
         double subtotal = calcularSubTotal(pedido);
-        double IGV = 0.18;
+        double IGV = subtotal*0.18;
         double total = subtotal + IGV;
         
         pedido.setSubtotal(subtotal);

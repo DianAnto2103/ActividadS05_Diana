@@ -4,16 +4,10 @@
  */
 package model.Facade;
 
-import model.Pedido;
-
 /**
  *
  * @author diana
  */
-public class RegistrarPedido {
-    
-    public boolean registrar(Pedido pedido){
-        return pedido != null;
-    }
+public class GeneraciondeComprobante {
     
 }

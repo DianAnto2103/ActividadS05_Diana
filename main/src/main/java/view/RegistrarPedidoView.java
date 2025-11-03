@@ -6,6 +6,7 @@ package view;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -14,6 +15,7 @@ import javax.swing.JTextField;
 public class RegistrarPedidoView extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(RegistrarPedidoView.class.getName());
+    private static final DecimalFormat df = new DecimalFormat("#.00");
 
     /**
      * Creates new form RegistrarPedido
@@ -33,6 +35,7 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         botonCancelar = new javax.swing.JButton();
@@ -52,6 +55,18 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         nombreCliente = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Ventas");
@@ -89,20 +104,17 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
         jLabel6.setText("Sub-Total");
 
         subtotalProducto.setEditable(false);
-        subtotalProducto.setEnabled(false);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("IGV (18%)");
 
         IGV.setEditable(false);
-        IGV.setEnabled(false);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("TOTAL");
 
         totalProducto.setEditable(false);
         totalProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        totalProducto.setEnabled(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "DATOS DEL CONCEPTO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Century Gothic", 0, 14))); // NOI18N
 
@@ -199,6 +211,11 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
+        jButton1.setBackground(new java.awt.Color(227, 227, 227));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setText("Calcular");
+        jButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,12 +226,15 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                         .addGap(22, 22, 22)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(171, 171, 171)
+                                .addGap(39, 39, 39)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel6))
+                                            .addComponent(jLabel6)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jLabel7)))
                                         .addGap(30, 30, 30)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(subtotalProducto)
@@ -232,7 +252,7 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -265,7 +285,8 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(IGV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(IGV, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(40, 40, 40))
@@ -276,7 +297,7 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -331,6 +352,8 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JTextField cantidadProducto;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -348,20 +371,25 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
     private javax.swing.JTextField totalProducto;
     // End of variables declaration//GEN-END:variables
       
-    public void setSubTotalProducto(JTextField subtotalProducto){
-       this.subtotalProducto = subtotalProducto;
+    
+    public void setSubTotalProducto(double subtotalProducto){
+        this.subtotalProducto.setText(df.format(subtotalProducto));
     }
    
-    public void setIGV(JTextField IGV){
-       this.IGV = IGV;
+    public void setIGV(double IGV){
+        this.IGV.setText(df.format(IGV));
     }
     
-    public void setTotal(JTextField totalProducto){
-        this.totalProducto = totalProducto;
+    public void setTotal(double totalProducto){
+        this.totalProducto.setText(df.format(totalProducto));
     }
     
-    public JTextField getNombreCliente(){
-        return nombreCliente;
+    public String getProducto(){
+        return (String) producto.getSelectedItem();
+    }
+    
+    public String getNombreCliente(){
+        return nombreCliente.getText();
     }
      
     public JButton getBotonAceptar() {
@@ -372,8 +400,8 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
         return botonCancelar;
     }
 
-    public JTextField getCantidadProducto() {
-        return cantidadProducto;
+    public int getCantidadProducto() {
+        return Integer.parseInt(cantidadProducto.getText());
     }
 
 }
