@@ -11,4 +11,5 @@ import model.Pedido;
  * @author diana
  */
 public interface FacturaServicio {
+    public void emitirFactura(Pedido pedido);
 }

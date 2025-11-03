@@ -11,5 +11,36 @@ import model.Pedido;
  * @author diana
  */
 public class AdapterFactura implements FacturaServicio{
-
+    LegacyBillingSystem adaptee;
+    
+    public AdapterFactura() {
+        
+    }
+    
+    @Override
+    public void emitirFactura(Pedido pedido) {
+       int clientId = generarIdCliente(pedido.getNombreCliente());
+       String productCode = convertirNombreACodigo(pedido.getProducto().getNombre());
+       double montoTotal = pedido.getTotal();
+       int cantidadTotal = pedido.getCantidad();
+       
+       
+       adaptee.createInvoice(clientId, productCode, montoTotal, cantidadTotal);
+    }
+    
+    private int generarIdCliente(String nombreCliente) {
+        return Math.abs(nombreCliente.hashCode() % 1000);
+    }
+    
+    private String convertirNombreACodigo(String nombreProducto) {
+        switch(nombreProducto) {
+            case "Sillón": return "SILL-001";
+            case "Cama": return "CAMA-002";
+            case "Mesa": return "MESA-003";
+            case "Silla": return "SILLA-004";
+            default: return "PROD-000";
+        }
+    }  
+    
+    
 }
