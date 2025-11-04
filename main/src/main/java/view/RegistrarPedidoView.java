@@ -52,6 +52,8 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         producto = new javax.swing.JComboBox<>();
         cantidadProducto = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        precioProducto = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         nombreCliente = new javax.swing.JTextField();
@@ -144,6 +146,19 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel9.setText("Precio: ");
+
+        precioProducto.setEditable(false);
+        precioProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        precioProducto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        precioProducto.setName("Cantidad"); // NOI18N
+        precioProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                precioProductoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -159,7 +174,11 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(cantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(precioProducto)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,7 +186,9 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(producto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9)
+                    .addComponent(precioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -264,8 +285,8 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                                             .addComponent(subtotalProducto)
                                             .addComponent(IGV, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(totalProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(totalProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(181, 181, 181)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -331,6 +352,10 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonGenerarComprobanteActionPerformed
 
+    private void precioProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precioProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_precioProductoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,16 +394,22 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField nombreCliente;
+    private javax.swing.JTextField precioProducto;
     private javax.swing.JComboBox<String> producto;
     private javax.swing.JTextField subtotalProducto;
     private javax.swing.JTextField totalProducto;
     // End of variables declaration//GEN-END:variables
       
+    
+    public void setPrecioProducto(double precioProducto){
+        this.precioProducto.setText(df.format(precioProducto));
+    }
     
     public void setSubTotalProducto(double subtotalProducto){
         this.subtotalProducto.setText(df.format(subtotalProducto));

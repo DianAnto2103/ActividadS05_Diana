@@ -10,12 +10,12 @@ package model;
  * @author diana
  */
 public class Pedido {
-    String nombreCliente;
-    Producto producto;
-    int cantidad;
-    double subtotal;
-    double total;
-    double IGV;
+    private String nombreCliente;
+    private Producto producto;
+    private int cantidad;
+    private double subtotal;
+    private double total;
+    private double IGV;
     
     public Pedido(String nombreCliente, Producto producto, int cantidad) {
         this.nombreCliente = nombreCliente;

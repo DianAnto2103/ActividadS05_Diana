@@ -31,7 +31,8 @@ public class LegacyBillingSystem {
         System.out.println("PRODUCTO: " + itemCode);
         System.out.println("VALOR UNIT: " + unitValue);
         System.out.println("CANTIDAD: " + itemQty);
-        System.out.println("TOTAL: " + (unitValue * itemQty));
+        System.out.println("SUBTOTAL: " + (unitValue * itemQty));
+        System.out.println("TOTAL: " + (unitValue * itemQty) * 1.18);
         System.out.println("ESTADO: PROCESADO");
         System.out.println("=====================================");
         

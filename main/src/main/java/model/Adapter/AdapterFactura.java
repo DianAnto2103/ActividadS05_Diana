@@ -11,7 +11,7 @@ import model.Pedido;
  * @author diana
  */
 public class AdapterFactura implements FacturaServicio{
-    LegacyBillingSystem adaptee;
+    private LegacyBillingSystem adaptee;
     
     public AdapterFactura(LegacyBillingSystem adaptee) {
         this.adaptee = adaptee;
@@ -22,11 +22,11 @@ public class AdapterFactura implements FacturaServicio{
        int clientId = generarIdCliente(pedido.getNombreCliente());
        String nombreCliente = pedido.getNombreCliente();
        String productCode = convertirNombreACodigo(pedido.getProducto().getNombre());
-       double montoTotal = pedido.getTotal();
+       double precioUnitario = pedido.getProducto().getPrecio();
        int cantidadTotal = pedido.getCantidad();
        
        
-       adaptee.createInvoice(clientId, nombreCliente, productCode, montoTotal, cantidadTotal);
+       adaptee.createInvoice(clientId, nombreCliente, productCode, precioUnitario, cantidadTotal);
     }
     
     private int generarIdCliente(String nombreCliente) {

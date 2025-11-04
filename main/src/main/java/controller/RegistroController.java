@@ -50,7 +50,8 @@ public final class RegistroController {
             if("VALIDO".equals(resultado))
             {
                 this.pedidoGuardado = pedido;
-              
+                
+                this.vistaRegistro.setPrecioProducto(pedido.getProducto().getPrecio());
                 this.vistaRegistro.setTotal(pedido.getTotal());
                 this.vistaRegistro.setIGV(pedido.getIGV());
                 this.vistaRegistro.setSubTotalProducto(pedido.getSubtotal());

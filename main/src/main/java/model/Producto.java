@@ -9,9 +9,9 @@ package model;
  * @author diana
  */
 public class Producto {
-    String nombre;
-    int cantidadStock;
-    double precio;
+    private String nombre;
+    private int cantidadStock;
+    private double precio;
     
     public Producto(String nombre, int cantidadStock, double precio) {
         this.nombre = nombre;
