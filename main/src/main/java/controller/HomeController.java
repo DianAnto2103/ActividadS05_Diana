@@ -14,8 +14,6 @@ import view.*;
  */
 public class HomeController {
     RegistrarPedidoView vistaRegistrarPedido;
-    FacturaView vistaFactura;
-    RegistroController controllerRegistroController;
 
     public HomeController() {
         inicializarComponentes();
@@ -24,8 +22,7 @@ public class HomeController {
     
     public void inicializarComponentes(){
         this.vistaRegistrarPedido = new RegistrarPedidoView();
-        this.vistaFactura = new FacturaView();
-        this.controllerRegistroController = new RegistroController(vistaRegistrarPedido, vistaFactura);
+        new RegistroController(vistaRegistrarPedido);
     }
     
     public void mostrarVentanaPrincipal(){ 

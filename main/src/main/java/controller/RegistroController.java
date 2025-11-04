@@ -7,7 +7,6 @@ package controller;
 import javax.swing.JOptionPane;
 import model.Facade.PedidoFacade;
 import model.*;
-import view.FacturaView;
 import view.RegistrarPedidoView;
 /**
  *
@@ -17,20 +16,16 @@ public final class RegistroController {
     private RegistrarPedidoView vistaRegistro;
     private PedidoFacade pedidoFacade;
     private Pedido pedidoGuardado;
-    private FacturaController facturaController;
-    private FacturaView vistaFactura;
     
-    public RegistroController(RegistrarPedidoView vistaRegistro,FacturaView vistaFactura){
+    public RegistroController(RegistrarPedidoView vistaRegistro){
         this.vistaRegistro = vistaRegistro;
-        this.vistaFactura = vistaFactura;
         this.pedidoFacade = new PedidoFacade();
-        this.facturaController = new FacturaController(vistaFactura);
         configurarEventos();
     }
     
     public void configurarEventos(){
         this.vistaRegistro.getBotonCancelar().addActionListener(e -> cerrarVentana());
-        this.vistaRegistro.getBotonAceptar().addActionListener(e -> calcularPedido());
+        this.vistaRegistro.getBotonAceptar().addActionListener(e -> visualizarPedido());
         this.vistaRegistro.getGenerarComprobante().addActionListener(e -> confirmarPedido());
     }
     
@@ -38,13 +33,14 @@ public final class RegistroController {
         this.vistaRegistro.dispose();
     }  
     
-    
-    public void calcularPedido()
+    /**
+     *
+     */
+    public void visualizarPedido()
     {
         try
         {
             String nombreProducto = vistaRegistro.getProducto();
-            int cantidad = vistaRegistro.getCantidadProducto();
             Producto producto = crearProducto(nombreProducto);
             Pedido pedido = new Pedido(vistaRegistro.getNombreCliente(),producto,vistaRegistro.getCantidadProducto());
         
@@ -92,7 +88,10 @@ public final class RegistroController {
             String resultado = pedidoFacade.procesarPedido(pedidoGuardado, true);
             if("VALIDO".equals(resultado))
             {
-                facturaController.mostrarComprobante(pedidoGuardado);
+                JOptionPane.showMessageDialog(vistaRegistro, 
+                    "¡Pedido confirmado! Factura generada en sistema legacy", 
+                    "Éxito", 
+                    JOptionPane.INFORMATION_MESSAGE);
                 this.pedidoGuardado = null; //es para limpiar pedido guardado
             }
             else 

@@ -20,12 +20,13 @@ public class AdapterFactura implements FacturaServicio{
     @Override
     public void emitirFactura(Pedido pedido) {
        int clientId = generarIdCliente(pedido.getNombreCliente());
+       String nombreCliente = pedido.getNombreCliente();
        String productCode = convertirNombreACodigo(pedido.getProducto().getNombre());
        double montoTotal = pedido.getTotal();
        int cantidadTotal = pedido.getCantidad();
        
        
-       adaptee.createInvoice(clientId, productCode, montoTotal, cantidadTotal);
+       adaptee.createInvoice(clientId, nombreCliente, productCode, montoTotal, cantidadTotal);
     }
     
     private int generarIdCliente(String nombreCliente) {
@@ -34,7 +35,7 @@ public class AdapterFactura implements FacturaServicio{
     
     private String convertirNombreACodigo(String nombreProducto) {
         switch(nombreProducto) {
-            case "Sillón": return "SILL-001";
+            case "Sillón": return "SILLON-001";
             case "Cama": return "CAMA-002";
             case "Mesa": return "MESA-003";
             case "Silla": return "SILLA-004";
