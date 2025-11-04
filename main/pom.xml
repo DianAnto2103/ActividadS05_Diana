@@ -10,4 +10,5 @@
         <maven.compiler.release>24</maven.compiler.release>
         <exec.mainClass>com.mycompany.main.Main</exec.mainClass>
     </properties>
+    <name>Actividad04</name>
 </project>
