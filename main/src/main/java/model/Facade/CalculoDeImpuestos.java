@@ -14,13 +14,14 @@ import model.Strategy.*;
  */
 public class CalculoDeImpuestos {
     private Context_Strategy contexto;
-    private String tipodeCalculo;
+    private String tipodeCalculo = "Con IGV";;
+    
+    public CalculoDeImpuestos() {
+        this.contexto = new Context_Strategy();
+    }
     
     public void calcular(Pedido pedido){
-        double subtotal = calcularSubTotal(pedido);
-        
-        seleccionarEstrategia(tipodeCalculo);
-        
+        double subtotal = calcularSubTotal(pedido);      
         double IGV = contexto.executeStrategy(subtotal);
         double total = subtotal + IGV;
         

@@ -33,18 +33,16 @@ public final class RegistroController {
         this.vistaRegistro.dispose();
     }  
     
-    /**
-     *
-     */
     public void visualizarPedido()
     {
         try
         {
+            String tipoCalculo = vistaRegistro.getTipoImpuestoSeleccionado();
             String nombreProducto = vistaRegistro.getProducto();
             Producto producto = crearProducto(nombreProducto);
             Pedido pedido = new Pedido(vistaRegistro.getNombreCliente(),producto,vistaRegistro.getCantidadProducto());
         
-            String resultado = pedidoFacade.procesarPedido(pedido, false);
+            String resultado = pedidoFacade.procesarPedido(pedido, false, tipoCalculo);
          
         
             if("VALIDO".equals(resultado))
@@ -86,7 +84,8 @@ public final class RegistroController {
         }
         try
         {
-            String resultado = pedidoFacade.procesarPedido(pedidoGuardado, true);
+            String tipoCalculo = vistaRegistro.getTipoImpuestoSeleccionado();
+            String resultado = pedidoFacade.procesarPedido(pedidoGuardado, true, tipoCalculo);
             if("VALIDO".equals(resultado))
             {
                 JOptionPane.showMessageDialog(vistaRegistro, 

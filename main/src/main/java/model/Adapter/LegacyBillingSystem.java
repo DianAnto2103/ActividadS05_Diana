@@ -19,7 +19,7 @@ public class LegacyBillingSystem {
      * @param itemQty
      * @return Número de factura
      */
-    public int createInvoice(int idCliente, String nameCliente,String itemCode, double unitValue, int itemQty) {
+    public int createInvoice(int idCliente, String nameCliente,String itemCode, double unitValue, int itemQty, double tax) {
         // Generar número de factura secuencial
         numeroFactura++;
         
@@ -32,7 +32,7 @@ public class LegacyBillingSystem {
         System.out.println("VALOR UNIT: " + unitValue);
         System.out.println("CANTIDAD: " + itemQty);
         System.out.println("SUBTOTAL: " + (unitValue * itemQty));
-        System.out.println("IGV: " + (unitValue * itemQty) * 0.18);
+        System.out.println("IGV: " + tax;
         System.out.println("TOTAL: " + (unitValue * itemQty) * 1.18);
         System.out.println("ESTADO: PROCESADO");
         System.out.println("=====================================");

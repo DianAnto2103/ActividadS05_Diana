@@ -5,7 +5,6 @@
 package view;
 
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import java.text.DecimalFormat;
 
 /**
@@ -463,6 +462,19 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
     private javax.swing.JTextField totalProducto;
     // End of variables declaration//GEN-END:variables
       
+    public String getTipoImpuestoSeleccionado()
+    {
+        if(conIGV.isSelected()){
+            return "Con IGV";
+        }
+        else if(sinIGV.isSelected())
+        {
+            return "Exonerado";
+        }
+        
+        return "Con IGV";
+    }
+    
     
     public void setPrecioProducto(double precioProducto){
         this.precioProducto.setText(df.format(precioProducto));

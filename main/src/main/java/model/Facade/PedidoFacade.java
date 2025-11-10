@@ -23,8 +23,7 @@ public class PedidoFacade {
         this.comprobante = new GeneraciondeComprobante();
     }
 
-    public String procesarPedido(Pedido pedido, boolean confirmacion){
-        String tipoCalculo;
+    public String procesarPedido(Pedido pedido, boolean confirmacion,String tipoCalculo){
         if (pedido.getCantidad() <= 0) {
             return "CANTIDAD_INVALIDA";
         }
@@ -34,6 +33,7 @@ public class PedidoFacade {
         }
         
         //Se calcula el total (sub-total, IGV, total)
+        calculadora.seleccionarEstrategia(tipoCalculo);
         calculadora.calcular(pedido);
         
         if(confirmacion){
