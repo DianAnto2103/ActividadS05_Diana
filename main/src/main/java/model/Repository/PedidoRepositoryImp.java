@@ -23,6 +23,10 @@ public class PedidoRepositoryImp implements PedidoRepository{
     private int nextId = 1;
     private final String ARCHIVO = "pedidos.txt";
     
+    public PedidoRepositoryImp(){
+        cargarDesdeArchivo();
+    }
+    
     @Override
     public Pedido buscarporID(int ID){
         return pedidos.stream()
@@ -39,20 +43,27 @@ public class PedidoRepositoryImp implements PedidoRepository{
     
     @Override
     public void guardar(Pedido pedido){
+        pedido.setID(nextId++);
         pedidos.add(pedido);
+        guardarEnArchivo();
     }
     
     @Override
     public void actualizar(Pedido pedido){
-        int index = pedidos.indexOf(pedido);
-        if(index >= 0){
-            pedidos.set(index, pedido);
+        for(int i = 0; i < pedidos.size(); i++)
+        {
+            if (pedidos.get(i).getID() == pedido.getID()){
+                pedidos.set(i, pedido);
+                guardarEnArchivo();
+                return;
+            }
         }
     }
     
     @Override
     public void eliminar(Pedido pedido){
-        pedidos.remove(pedido);
+        pedidos.removeIf(p -> p.getID() == pedido.getID());
+        guardarEnArchivo();
     }
     
     private void guardarEnArchivo() {
@@ -66,6 +77,44 @@ public class PedidoRepositoryImp implements PedidoRepository{
             writer.close();
         } catch (IOException e) {
             System.out.println("Error guardando: " + e.getMessage());
+        }
+    }
+    
+    private void cargarDesdeArchivo() {
+        
+        try {
+            File file = new File(ARCHIVO);
+            if (!file.exists()) return;
+        
+            BufferedReader reader = new BufferedReader(new FileReader(ARCHIVO));
+            String linea;
+            
+            while ((linea = reader.readLine()) != null) 
+            {
+                String[] datos = linea.split(",");
+                if (datos.length == 5) 
+                {
+                    Pedido pedido = new Pedido(
+                    datos[1], // nombreeCliente
+                    new Producto(datos[2], 20, 20), // producto
+                    Integer.parseInt(datos[3]) // cantidad
+                );
+                    
+                    pedido.setID(Integer.parseInt(datos[0]));
+                    pedido.setTotal(Double.parseDouble(datos[4]));
+                    pedidos.add(pedido);
+                
+                // Actualizar nextId
+                    if (pedido.getID() >= nextId) 
+                    {
+                        nextId = pedido.getID() + 1;
+                    }
+                }
+            }
+            
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("Error cargando: " + e.getMessage());
         }
     }
 }
