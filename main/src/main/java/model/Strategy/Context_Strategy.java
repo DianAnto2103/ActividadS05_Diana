@@ -4,8 +4,6 @@
  */
 package model.Strategy;
 
-import model.Strategy.ImpuestoStrategy;
-
 /**
  *
  * @author diana
@@ -15,6 +13,10 @@ public class Context_Strategy {
     
     public void setEstrategia(ImpuestoStrategy estrategia) {
         this.estrategia = estrategia;
+    }
+    
+    public double executeStrategy(double subtotal){
+        return estrategia.calcular(subtotal);
     }
     
 }
