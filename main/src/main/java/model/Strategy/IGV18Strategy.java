@@ -9,8 +9,10 @@ package model.Strategy;
  * @author diana
  */
 public class IGV18Strategy implements ImpuestoStrategy {
-    public void calcular(double subtotal){
-        
+    public double calcular(double subtotal){
+        double IGV;
+        IGV = subtotal * 0.18;
+        return IGV;
     }
     
 }

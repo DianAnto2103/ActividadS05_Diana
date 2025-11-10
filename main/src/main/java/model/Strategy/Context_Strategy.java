@@ -4,12 +4,17 @@
  */
 package model.Strategy;
 
-import model.Pedido;
+import model.Strategy.ImpuestoStrategy;
 
 /**
  *
  * @author diana
  */
-public interface ImpuestoStrategy {           
-    public double calcular(double subtotal);
+public class Context_Strategy {
+    private ImpuestoStrategy estrategia;
+    
+    public void setEstrategia(ImpuestoStrategy estrategia) {
+        this.estrategia = estrategia;
+    }
+    
 }

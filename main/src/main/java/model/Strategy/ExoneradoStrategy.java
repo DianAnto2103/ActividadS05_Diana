@@ -10,8 +10,11 @@ package model.Strategy;
  */
 public class ExoneradoStrategy implements ImpuestoStrategy {
     @Override
-    public void calcular(double subtotal)
+    public double calcular(double subtotal)
     {
+        double IGV;     
+        IGV = 0;
+        return IGV;
         
     }
 }
