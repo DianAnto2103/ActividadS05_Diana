@@ -15,7 +15,7 @@ public class CalculoDeImpuestos {
     
     public void calcular(Pedido pedido){
         double subtotal = calcularSubTotal(pedido);
-        double IGV = subtotal*0.18;
+        double IGV = seleccionarImpuesto(pedido);
         double total = subtotal + IGV;
         
         pedido.setSubtotal(subtotal);
@@ -23,7 +23,15 @@ public class CalculoDeImpuestos {
         pedido.setTotal(total); 
     }
     
-    public double calcularSubTotal(Pedido pedido){
+    public double calcularSubTotal(Pedido pedido)
+    {
         return pedido.getCantidad()* pedido.getProducto().getPrecio();
+    }
+    
+    public double seleccionarImpuesto(Pedido pedido)
+    {
+        
+        return 0;
+        
     }
 }
