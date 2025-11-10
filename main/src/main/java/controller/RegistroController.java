@@ -4,6 +4,7 @@
  */
 package controller;
 
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.Facade.PedidoFacade;
 import model.*;
@@ -27,6 +28,7 @@ public final class RegistroController {
         this.vistaRegistro.getBotonCancelar().addActionListener(e -> cerrarVentana());
         this.vistaRegistro.getBotonAceptar().addActionListener(e -> visualizarPedido());
         this.vistaRegistro.getGenerarComprobante().addActionListener(e -> confirmarPedido());
+        this.vistaRegistro.getBotonListar().addActionListener(e -> listarPedidos());
     }
     
     public void cerrarVentana(){
@@ -37,6 +39,13 @@ public final class RegistroController {
     {
         try
         {
+            
+            if (vistaRegistro.getNombreCliente().trim().isEmpty()) 
+            {
+                JOptionPane.showMessageDialog(vistaRegistro, "Ingrese el nombre del cliente", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            
             String tipoCalculo = vistaRegistro.getTipoImpuestoSeleccionado();
             String nombreProducto = vistaRegistro.getProducto();
             Producto producto = crearProducto(nombreProducto);
@@ -101,6 +110,38 @@ public final class RegistroController {
             }
         }catch(Exception e){
            JOptionPane.showMessageDialog(vistaRegistro, "Error al confirmar: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE); 
+        }
+    }
+    
+    private void listarPedidos(){
+        try
+        {
+            List<Pedido> pedidos = pedidoFacade.obtenerTodosPedidos();
+            String mensaje = "PEDIDOS REGISTRADOS:\n";
+            
+            if(pedidos.isEmpty()){
+                JOptionPane.showMessageDialog(vistaRegistro, "No existen pedidos", "Lista de pedidos", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            
+            for(int i = 0; i < pedidos.size(); i++)
+            {
+                Pedido pedido = pedidos.get(i);
+                mensaje = mensaje + "ID: " + pedido.getID() +
+                      " | Cliente: " + pedido.getNombreCliente() +
+                      " | Producto: " + pedido.getProducto().getNombre() +
+                      " | Sub-Total: " + pedido.getSubtotal() +
+                      " | IGV: " + pedido.getIGV() +
+                      " | Total: S/ " + pedido.getTotal() + "\n"; 
+                
+            }
+            
+            mensaje = mensaje + "\nTotal: " + pedidos.size() + " pedidos";
+            
+            JOptionPane.showMessageDialog(vistaRegistro, mensaje, "Lista de Pedidos", JOptionPane.INFORMATION_MESSAGE);
+        
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(vistaRegistro, "Error: " + e.getMessage());
         }
     }
     

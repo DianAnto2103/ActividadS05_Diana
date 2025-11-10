@@ -70,11 +70,11 @@ public class PedidoRepositoryImp implements PedidoRepository{
         try {
             File archivo = new File(ARCHIVO);
             System.out.println("RUTA DEL ARCHIVO: " + archivo.getAbsolutePath());
-            FileWriter writer = new FileWriter(ARCHIVO, true);
+            FileWriter writer = new FileWriter(ARCHIVO);
             for (Pedido pedido : pedidos) {
-                writer.write(pedido.getID() + ", Nombre: " + pedido.getNombreCliente() + ", Producto: " +
-                           pedido.getProducto().getNombre() + ", Cantidad: " + pedido.getCantidad() + ", Sub-Total: " + 
-                        pedido.getSubtotal()+ ", IGV: " + pedido.getIGV() +", Total: " +
+                writer.write(pedido.getID() + "," + pedido.getNombreCliente() + "," +
+                           pedido.getProducto().getNombre() + "," + pedido.getCantidad() + "," + 
+                        pedido.getSubtotal()+ "," + pedido.getIGV() +"," +
                         pedido.getTotal() + "\n");
             }
             writer.close();
@@ -95,7 +95,7 @@ public class PedidoRepositoryImp implements PedidoRepository{
             while ((linea = reader.readLine()) != null) 
             {
                 String[] datos = linea.split(",");
-                if (datos.length == 5) 
+                if (datos.length == 7) 
                 {
                     Pedido pedido = new Pedido(
                     datos[1], // nombreeCliente
@@ -104,7 +104,9 @@ public class PedidoRepositoryImp implements PedidoRepository{
                 );
                     
                     pedido.setID(Integer.parseInt(datos[0]));
-                    pedido.setTotal(Double.parseDouble(datos[4]));
+                    pedido.setSubtotal(Double.parseDouble(datos[4]));
+                    pedido.setIGV(Double.parseDouble(datos[5])); 
+                    pedido.setTotal(Double.parseDouble(datos[6]));
                     pedidos.add(pedido);
                 
                 // Actualizar nextId

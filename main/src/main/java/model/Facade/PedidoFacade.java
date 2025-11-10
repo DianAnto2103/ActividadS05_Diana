@@ -4,6 +4,7 @@
  */
 package model.Facade;
 
+import java.util.List;
 import model.Pedido;
 import model.Repository.PedidoRepositoryImp;
 
@@ -43,4 +44,8 @@ public class PedidoFacade {
         }
         return "VALIDO";
     }   
+    
+    public List<Pedido> obtenerTodosPedidos() {
+        return repositorio.buscarTodos();
+    }
 }

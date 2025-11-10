@@ -60,6 +60,7 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
         botonGenerarComprobante = new javax.swing.JButton();
         conIGV = new javax.swing.JRadioButton();
         sinIGV = new javax.swing.JRadioButton();
+        buttonListar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -264,6 +265,14 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
             }
         });
 
+        buttonListar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonListar.setText("L");
+        buttonListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonListarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -280,24 +289,29 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                         .addComponent(botonAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)))
+                        .addGap(52, 52, 52)
+                        .addComponent(jSeparator2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(totalProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
-                            .addComponent(IGV, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(subtotalProducto, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(9, 9, 9))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jSeparator2)))
+                                .addComponent(buttonListar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(totalProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                                    .addComponent(IGV, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(subtotalProducto, javax.swing.GroupLayout.Alignment.LEADING))))
+                        .addGap(9, 9, 9)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(83, 83, 83)
@@ -360,7 +374,8 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonGenerarComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonListar))
                 .addGap(17, 17, 17))
         );
 
@@ -409,6 +424,10 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_IGVActionPerformed
 
+    private void buttonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonListarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buttonListarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -439,6 +458,7 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonGenerarComprobante;
     private javax.swing.ButtonGroup botones;
+    private javax.swing.JButton buttonListar;
     private javax.swing.JTextField cantidadProducto;
     private javax.swing.JRadioButton conIGV;
     private javax.swing.JDialog jDialog1;
@@ -502,6 +522,10 @@ public class RegistrarPedidoView extends javax.swing.JFrame {
      
     public JButton getBotonAceptar() {
         return botonAceptar;
+    }
+    
+    public JButton getBotonListar(){
+        return buttonListar;
     }
 
     public JButton getBotonCancelar() {
