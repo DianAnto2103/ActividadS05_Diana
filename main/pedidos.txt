@@ -1,0 +1,4 @@
+
+1,Diana Caparachin,Sillón,3,60.0
+1, Nombre: Diana Caparachin, Producto: Sillón, Cantidad: 3, Sub-Total: 0.0IGV: 0.0, Total: 60.0
+2, Nombre: Diana Antonela Caparachin, Producto: Cama, Cantidad: 4, Sub-Total: 80.0IGV: 14.399999999999999, Total: 94.4

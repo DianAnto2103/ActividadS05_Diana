@@ -68,11 +68,14 @@ public class PedidoRepositoryImp implements PedidoRepository{
     
     private void guardarEnArchivo() {
         try {
-            FileWriter writer = new FileWriter(ARCHIVO);
+            File archivo = new File(ARCHIVO);
+            System.out.println("RUTA DEL ARCHIVO: " + archivo.getAbsolutePath());
+            FileWriter writer = new FileWriter(ARCHIVO, true);
             for (Pedido pedido : pedidos) {
-                writer.write(pedido.getID() + "," + pedido.getNombreCliente() + "," +
-                           pedido.getProducto().getNombre() + "," + pedido.getCantidad() + "," +
-                           pedido.getTotal() + "\n");
+                writer.write(pedido.getID() + ", Nombre: " + pedido.getNombreCliente() + ", Producto: " +
+                           pedido.getProducto().getNombre() + ", Cantidad: " + pedido.getCantidad() + ", Sub-Total: " + 
+                        pedido.getSubtotal()+ ", IGV: " + pedido.getIGV() +", Total: " +
+                        pedido.getTotal() + "\n");
             }
             writer.close();
         } catch (IOException e) {

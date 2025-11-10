@@ -5,6 +5,7 @@
 package model.Facade;
 
 import model.Pedido;
+import model.Repository.PedidoRepositoryImp;
 
 /**
  *
@@ -12,15 +13,15 @@ import model.Pedido;
  */
 public class PedidoFacade {
     private CalculoDeImpuestos calculadora;
-    private RegistroDePedidos registradora;
     private ValidacionDeStock validadora;
     private GeneraciondeComprobante comprobante;
+    private PedidoRepositoryImp repositorio;
     
     public PedidoFacade(){
         this.calculadora = new CalculoDeImpuestos();
-        this.registradora = new RegistroDePedidos();
         this.validadora = new ValidacionDeStock();
         this.comprobante = new GeneraciondeComprobante();
+        this.repositorio = new PedidoRepositoryImp();
     }
 
     public String procesarPedido(Pedido pedido, boolean confirmacion,String tipoCalculo){
@@ -37,10 +38,8 @@ public class PedidoFacade {
         calculadora.calcular(pedido);
         
         if(confirmacion){
-            if(!registradora.registrar(pedido)){
-                return "ERROR_REGISTRO";
-            }
             comprobante.generarComprobante(pedido);
+            repositorio.guardar(pedido);
         }
         return "VALIDO";
     }   
