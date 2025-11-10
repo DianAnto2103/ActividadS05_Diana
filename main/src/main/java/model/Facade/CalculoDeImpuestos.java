@@ -14,7 +14,6 @@ import model.Strategy.*;
  */
 public class CalculoDeImpuestos {
     private Context_Strategy contexto;
-    private String tipodeCalculo = "Con IGV";;
     
     public CalculoDeImpuestos() {
         this.contexto = new Context_Strategy();
@@ -38,7 +37,6 @@ public class CalculoDeImpuestos {
         } else if("Exonerado".equals(tipoCalculo)){
             contexto.setEstrategia(new ExoneradoStrategy());
         }
-        this.tipodeCalculo = tipoCalculo;
     }
     
     public double calcularSubTotal(Pedido pedido)
