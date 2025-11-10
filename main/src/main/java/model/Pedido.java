@@ -10,6 +10,7 @@ package model;
  * @author diana
  */
 public class Pedido {
+    private int ID;
     private String nombreCliente;
     private Producto producto;
     private int cantidad;
@@ -70,5 +71,13 @@ public class Pedido {
 
     public void setIGV(double IGV) {
         this.IGV = IGV;
+    }
+    
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }
