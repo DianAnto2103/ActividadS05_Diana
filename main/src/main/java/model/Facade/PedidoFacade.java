@@ -24,6 +24,7 @@ public class PedidoFacade {
     }
 
     public String procesarPedido(Pedido pedido, boolean confirmacion){
+        String tipoCalculo;
         if (pedido.getCantidad() <= 0) {
             return "CANTIDAD_INVALIDA";
         }

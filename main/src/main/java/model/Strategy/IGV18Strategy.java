@@ -10,9 +10,7 @@ package model.Strategy;
  */
 public class IGV18Strategy implements ImpuestoStrategy {
     public double calcular(double subtotal){
-        double IGV;
-        IGV = subtotal * 0.18;
-        return IGV;
+        return subtotal * 0.18;
     }
     
 }

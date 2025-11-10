@@ -5,6 +5,7 @@
 package model.Facade;
 
 import model.Pedido;
+import model.Strategy.*;
 
 
 /**
@@ -12,10 +13,15 @@ import model.Pedido;
  * @author diana
  */
 public class CalculoDeImpuestos {
+    private Context_Strategy contexto;
+    private String tipodeCalculo;
     
     public void calcular(Pedido pedido){
         double subtotal = calcularSubTotal(pedido);
-        double IGV = seleccionarImpuesto(pedido);
+        
+        seleccionarEstrategia(tipodeCalculo);
+        
+        double IGV = contexto.executeStrategy(subtotal);
         double total = subtotal + IGV;
         
         pedido.setSubtotal(subtotal);
@@ -23,15 +29,20 @@ public class CalculoDeImpuestos {
         pedido.setTotal(total); 
     }
     
+    public void seleccionarEstrategia(String tipoCalculo)
+    {
+        if("Con IGV".equals(tipoCalculo))
+        {
+            contexto.setEstrategia(new IGV18Strategy());
+        } else if("Exonerado".equals(tipoCalculo)){
+            contexto.setEstrategia(new ExoneradoStrategy());
+        }
+        this.tipodeCalculo = tipoCalculo;
+    }
+    
     public double calcularSubTotal(Pedido pedido)
     {
         return pedido.getCantidad()* pedido.getProducto().getPrecio();
     }
-    
-    public double seleccionarImpuesto(Pedido pedido)
-    {
-        
-        return 0;
-        
-    }
+
 }

@@ -12,9 +12,7 @@ public class ExoneradoStrategy implements ImpuestoStrategy {
     @Override
     public double calcular(double subtotal)
     {
-        double IGV;     
-        IGV = 0;
-        return IGV;
+        return subtotal*0;
         
     }
 }
