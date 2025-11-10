@@ -23,10 +23,13 @@ public class AdapterFactura implements FacturaServicio{
        String nombreCliente = pedido.getNombreCliente();
        String productCode = convertirNombreACodigo(pedido.getProducto().getNombre());
        double precioUnitario = pedido.getProducto().getPrecio();
+       double subtotal = pedido.getSubtotal();
+       double IGV = pedido.getIGV();
+       double total = pedido.getTotal();
        int cantidadTotal = pedido.getCantidad();
        
        
-       adaptee.createInvoice(clientId, nombreCliente, productCode, precioUnitario, cantidadTotal);
+       adaptee.createInvoice(clientId, nombreCliente, productCode, cantidadTotal, precioUnitario, subtotal, IGV, total);
     }
     
     private int generarIdCliente(String nombreCliente) {
