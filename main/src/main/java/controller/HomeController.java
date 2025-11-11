@@ -13,8 +13,8 @@ import view.*;
  * @author diana
  */
 public class HomeController {
-    RegistrarPedidoView vistaRegistrarPedido;
-    RegistroController controllerRegistrarPedido;
+    private RegistrarPedidoView vistaRegistrarPedido;
+    private RegistroController controllerRegistrarPedido;
 
     public HomeController() {
         inicializarComponentes();

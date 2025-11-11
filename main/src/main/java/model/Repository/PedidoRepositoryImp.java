@@ -66,7 +66,7 @@ public class PedidoRepositoryImp implements PedidoRepository{
         guardarEnArchivo();
     }
     
-    private void guardarEnArchivo() {
+    public void guardarEnArchivo() {
         try {
             File archivo = new File(ARCHIVO);
             System.out.println("RUTA DEL ARCHIVO: " + archivo.getAbsolutePath());
@@ -83,7 +83,7 @@ public class PedidoRepositoryImp implements PedidoRepository{
         }
     }
     
-    private void cargarDesdeArchivo() {
+    public void cargarDesdeArchivo() {
         
         try {
             File file = new File(ARCHIVO);

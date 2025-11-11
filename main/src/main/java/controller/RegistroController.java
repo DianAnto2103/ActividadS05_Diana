@@ -113,7 +113,7 @@ public final class RegistroController {
         }
     }
     
-    private void listarPedidos(){
+    public void listarPedidos(){
         try
         {
             List<Pedido> pedidos = pedidoFacade.obtenerTodosPedidos();

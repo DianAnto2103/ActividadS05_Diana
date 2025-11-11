@@ -12,9 +12,9 @@ import model.Pedido;
  * @author diana
  */
 public interface PedidoRepository {
-    Pedido buscarporID(int id);
-    List<Pedido> buscarTodos();
-    void guardar(Pedido pedido);
-    void actualizar(Pedido pedido);
-    void eliminar(Pedido pedido);
+    public Pedido buscarporID(int id);
+    public List<Pedido> buscarTodos();
+    public void guardar(Pedido pedido);
+    public void actualizar(Pedido pedido);
+    public void eliminar(Pedido pedido);
 }

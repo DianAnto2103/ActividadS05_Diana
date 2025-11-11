@@ -2,3 +2,5 @@
 2,Fausto Caparachin,Sillón,5,100.0,0.0,100.0
 3,Hilda,Mesa,7,140.0,25.2,165.2
 4,Gloria,Cama,20,400.0,0.0,400.0
+5,Fausto Caparachin,Cama,5,100.0,0.0,100.0
+6,Gloria,Cama,5,100.0,18.0,118.0
