@@ -4,8 +4,6 @@
  */
 package model.Strategy;
 
-import model.Pedido;
-
 /**
  *
  * @author diana
