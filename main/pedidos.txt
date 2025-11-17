@@ -1,6 +1,10 @@
 1,Diana Caparachin,Silla,2,40.0,7.199999999999999,47.2
-2,Fausto Caparachin,Sillón,5,100.0,0.0,100.0
-3,Hilda,Mesa,7,140.0,25.2,165.2
-4,Gloria,Cama,20,400.0,0.0,400.0
-5,Fausto Caparachin,Cama,5,100.0,0.0,100.0
-6,Gloria,Cama,5,100.0,18.0,118.0
+2,Diana Antonela Caparachin Reyes,Mesa,6,120.0,0.0,120.0
+3,Fausto Caparachin,Cama,10,200.0,0.0,200.0
+4,Nicolas Caparachin,Cama,10,200.0,36.0,236.0
+5,Gloria Reyes,Mesa,5,100.0,0.0,100.0
+6,Juan Reyes,Mesa,7,140.0,25.2,165.2
+7,Diana Antonella,Mesa,9,180.0,32.4,212.4
+8,Rubén Caparachin,Sillón,10,200.0,36.0,236.0
+9,Lazarte,Sillón,5,100.0,0.0,100.0
+10,Roberto,Mesa,4,80.0,0.0,80.0

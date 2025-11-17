@@ -14,7 +14,7 @@ public class UsuarioNoti implements SuscriptorComprobante {
 
     @Override
     public void actualizar(Pedido pedido) {
-        
+        System.out.println("[USUARIO] Se genero comprobante para: " + pedido.getNombreCliente());  
     }
 
 }

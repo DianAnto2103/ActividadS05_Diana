@@ -6,7 +6,8 @@ package model.Facade;
 
 import java.util.List;
 import model.Pedido;
-import model.Repository.PedidoRepositoryImp;
+import Repository.PedidoRepositoryImp;
+import model.Observer.*;
 
 /**
  *
@@ -17,12 +18,19 @@ public class PedidoFacade {
     private ValidacionDeStock validadora;
     private GeneraciondeComprobante comprobante;
     private PedidoRepositoryImp repositorio;
+    private NotificadorPedidos notificador;
     
     public PedidoFacade(){
         this.calculadora = new CalculoDeImpuestos();
         this.validadora = new ValidacionDeStock();
         this.comprobante = new GeneraciondeComprobante();
         this.repositorio = new PedidoRepositoryImp();
+        this.notificador = new NotificadorPedidos();
+        
+        
+        notificador.suscribir(new InventarioNoti());
+        notificador.suscribir(new UsuarioNoti());
+        notificador.suscribir(new LogEventoNoti());
     }
 
     public String procesarPedido(Pedido pedido, boolean confirmacion,String tipoCalculo){
@@ -41,7 +49,9 @@ public class PedidoFacade {
         if(confirmacion){
             comprobante.generarComprobante(pedido);
             repositorio.guardar(pedido);
+            notificador.notificarPedidoProcesado(pedido);
         }
+        
         return "VALIDO";
     }   
     
