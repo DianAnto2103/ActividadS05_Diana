@@ -43,15 +43,33 @@ public class PedidoFacade {
         }
         
         //Se calcula el total (sub-total, IGV, total)
-        calculadora.seleccionarEstrategia(tipoCalculo);
+        calculadora.seleccionarEstrategia(tipoCalculo); 
         calculadora.calcular(pedido);
         
         if(confirmacion){
-            comprobante.generarComprobante(pedido);
-            repositorio.guardar(pedido);
-            notificador.notificarPedidoProcesado(pedido);
+            
+            Thread hiloGenerarComprobantedePago = new Thread(() ->
+            {
+                comprobante.generarComprobante(pedido);
+            });
+            
+            Thread hiloGurdarPedido = new Thread(() -> 
+            {
+                repositorio.guardar(pedido);
+            });
+            
+            Thread hiloNotificacion = new Thread(() ->
+            {
+                notificador.notificarPedidoProcesado(pedido);
+            });
+            
+            hiloGenerarComprobantedePago.start();
+            hiloGurdarPedido.start();
+            hiloNotificacion.start();
+            
+            //para matener el orden
+          
         }
-        
         return "VALIDO";
     }   
     

@@ -15,7 +15,6 @@ import model.Pedido;
  */
 public class NotificadorPedidos {
     private List<SuscriptorComprobante> suscriptores = new ArrayList<>();
-    private Pedido pedido;
     
     public void suscribir(SuscriptorComprobante suscriptor){
         suscriptores.add(suscriptor);
@@ -26,7 +25,6 @@ public class NotificadorPedidos {
     }
     
     public void notificarPedidoProcesado(Pedido pedido){
-        this.pedido = pedido;
         System.out.println("=====================================");
         System.out.println("Notificando pedido procesado ID: N-" + pedido.getID());
         notificarTodos(pedido);  
