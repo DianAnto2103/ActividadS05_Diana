@@ -47,11 +47,7 @@ public class PedidoFacade {
         calculadora.calcular(pedido);
         
         if(confirmacion){
-            
-            Thread hiloGenerarComprobantedePago = new Thread(() ->
-            {
-                comprobante.generarComprobante(pedido);
-            });
+            comprobante.generarComprobante(pedido);
             
             Thread hiloGurdarPedido = new Thread(() -> 
             {
@@ -63,11 +59,18 @@ public class PedidoFacade {
                 notificador.notificarPedidoProcesado(pedido);
             });
             
-            hiloGenerarComprobantedePago.start();
             hiloGurdarPedido.start();
             hiloNotificacion.start();
             
             //para matener el orden
+            
+            try {
+                hiloGurdarPedido.join();
+                hiloNotificacion.join();
+            } catch (InterruptedException e){
+                System.out.println("Procesamiento interrumpido");
+                Thread.currentThread().interrupt();
+            }
           
         }
         return "VALIDO";
