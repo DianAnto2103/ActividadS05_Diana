@@ -11,5 +11,5 @@ import model.Pedido;
  * @author diana
  */
 public interface SuscriptorComprobante  {
-    void actualizar(Pedido pedido);
+    public void actualizar(Pedido pedido);
 }
